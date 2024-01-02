@@ -30,7 +30,7 @@ namespace Library.Models
 
         // Identifiant de l'employé (obligatoire avec un message d'erreur personnalisé si manquant)
         [Required(ErrorMessage = "Le champ Identifiant est requis.")]
-        public string Identifiant { get; set; }
+        public string Identifiant { get; set; }//pour se connnecter
 
         // Mot de passe de l'employé (obligatoire avec un message d'erreur personnalisé si manquant)
         [Required(ErrorMessage = "Le champ Mot de passe est requis.")]
