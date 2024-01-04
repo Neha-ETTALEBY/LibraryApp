@@ -14,9 +14,16 @@ namespace Library.DAO
         {
             _context = context ?? throw new ArgumentNullException(nameof(context));
         }
+        //cherche  si identifiant et mdp est dans  database pour qu'il puisse se connecter
+        public Employe GetEmployeBy_identifiant_Password(string identifiant, string motDePasse)
+        {
+            return _context.Employees.SingleOrDefault(e => e.Identifiant == identifiant && e.MotDePasse == motDePasse);
+        }
+     
+      
 
         // Méthode pour récupérer tous les employés de la base de données
-        public IEnumerable<Employe> GetAllEmployes()
+        public List<Employe> GetAllEmployes()
         {
             return _context.Employees.ToList();
         }
