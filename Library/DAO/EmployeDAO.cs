@@ -1,37 +1,40 @@
-﻿using System;
+﻿using Library.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using Library.Models;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Library.DAO
 {
     internal class EmployeDAO
     {
-        private readonly LibraryDBContext _context;
+        private readonly LibraryDBContext _dbcontext;
 
-        // Constructeur qui reçoit le contexte de base de données
+        // Constructeur qui reçoit le contexte de base de données pour avoir une référence 
+        // Ce design pattern est appele dependency injection
         public EmployeDAO(LibraryDBContext context)
         {
-            _context = context ?? throw new ArgumentNullException(nameof(context));
+            _dbcontext = context ?? throw new ArgumentNullException(nameof(context));
         }
         //cherche  si identifiant et mdp est dans  database pour qu'il puisse se connecter
-        public Employe GetEmployeBy_identifiant_Password(string identifiant, string motDePasse)
+        public Employe GetEmployeByIdentifiantPassword(string identifiant, string motDePasse)
         {
-            return _context.Employees.SingleOrDefault(e => e.Identifiant == identifiant && e.MotDePasse == motDePasse);
+            return _dbcontext.Employees.SingleOrDefault(e => e.Identifiant == identifiant && e.MotDePasse == motDePasse);
         }
-     
-      
+
+
 
         // Méthode pour récupérer tous les employés de la base de données
         public List<Employe> GetAllEmployes()
         {
-            return _context.Employees.ToList();
+            return _dbcontext.Employees.ToList();
         }
 
         // Méthode pour récupérer un employé par son ID
-        public Employe GetEmployeById(int employeId)
+        public Employe GetEmployeByID(int employeId)
         {
-            return _context.Employees.FirstOrDefault(e => e.IdEmploye == employeId);
+            return _dbcontext.Employees.FirstOrDefault(e => e.IdEmploye == employeId);
         }
 
         // Méthode pour ajouter un nouvel employé à la base de données
@@ -40,8 +43,8 @@ namespace Library.DAO
             if (employe == null)
                 throw new ArgumentNullException(nameof(employe));
 
-            _context.Employees.Add(employe);
-            _context.SaveChanges(); // Sauvegarder les changements dans la base de données
+            _dbcontext.Employees.Add(employe);
+            _dbcontext.SaveChanges(); // Sauvegarder les changements dans la base de données
         }
 
         // Méthode pour mettre à jour les informations d'un employé existant
@@ -51,18 +54,12 @@ namespace Library.DAO
                 throw new ArgumentNullException(nameof(employe));
 
             // Rechercher l'employé existant par son ID
-            var existingEmploye = _context.Employees.Find(employe.IdEmploye);
+            var existingEmploye = _dbcontext.Employees.Find(employe.IdEmploye); //chercher l'employe dans la bd s'il existe
 
             if (existingEmploye != null)
             {
-                // Mettre à jour les propriétés de l'employé existant
-                existingEmploye.Nom = employe.Nom;
-                existingEmploye.Prenom = employe.Prenom;
-                existingEmploye.AdresseEmail = employe.AdresseEmail;
-                existingEmploye.Identifiant = employe.Identifiant;
-                existingEmploye.MotDePasse = employe.MotDePasse;
-
-                _context.SaveChanges(); // Sauvegarder les changements dans la base de données
+                _dbcontext.Employees.Update(existingEmploye);
+                _dbcontext.SaveChanges(); // Sauvegarder les changements dans la base de données
             }
         }
 
@@ -70,13 +67,14 @@ namespace Library.DAO
         public void DeleteEmploye(int employeId)
         {
             // Rechercher l'employé à supprimer par son ID
-            var employeToDelete = _context.Employees.Find(employeId);
+            var employeToDelete = _dbcontext.Employees.Find(employeId);
 
             if (employeToDelete != null)
             {
-                _context.Employees.Remove(employeToDelete);
-                _context.SaveChanges(); // Sauvegarder les changements dans la base de données
+                _dbcontext.Employees.Remove(employeToDelete);
+                _dbcontext.SaveChanges(); // Sauvegarder les changements dans la base de données
             }
         }
+
     }
 }

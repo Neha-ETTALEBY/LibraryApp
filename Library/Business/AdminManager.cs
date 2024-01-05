@@ -1,14 +1,16 @@
-﻿using System;
+﻿using Library.DAO;
+using Library.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using Library.DAO;  // Assurez-vous d'importer les espaces de noms nécessaires
-using Library.Models;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Library.Business
 {
     internal class AdminManager
     {
-        private readonly AdminDAO _adminDAO;
+        AdminDAO _adminDAO;
         private readonly EmployeDAO _employeDAO;
         private readonly LivreDAO _livreDAO;
         private readonly ReservationDAO _reservationDAO;
@@ -32,21 +34,21 @@ namespace Library.Business
         public void AjouterLivre(Livre livre)
         {
             // Logique d'ajout d'un livre
-            _livreDAO.AjouterLivre(livre);
+            _livreDAO.AddLivre(livre);
         }
 
         // Consultation de tous les employés
-       /* public List<Employe> ConsulterEmployes()
-        {
-            // Logique de consultation des employés
-            return null
-        }*/
+        /* public List<Employe> ConsulterEmployes()
+         {
+             // Logique de consultation des employés
+             return null
+         }*/
 
         // Consultation de tous les livres
         public List<Livre> ConsulterLivres()
         {
             // Logique de consultation des livres
-            return _livreDAO.ObtenirTousLesLivres();
+            return _livreDAO.GetLivres();
         }
 
         // Suppression d'un employé
@@ -60,7 +62,7 @@ namespace Library.Business
         public void SupprimerLivre(int livreId)
         {
             // Logique de suppression d'un livre
-            _livreDAO.SupprimerLivre(livreId);
+            _livreDAO.RemoveLivre(livreId);
         }
 
         // Autres méthodes pour la gestion des réservations, des admins, etc.
