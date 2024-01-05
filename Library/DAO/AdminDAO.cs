@@ -16,7 +16,7 @@ namespace Library.DAO
         }
 
         // Méthode pour récupérer tous les administrateurs de la base de données
-        public IEnumerable<Admin> GetAllAdmins()
+        public List<Admin> GetAllAdmins()
         {
             return _context.Admins.ToList();
         }
