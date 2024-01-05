@@ -29,6 +29,14 @@ namespace Library.GUI
 
         }
 
-     
+        private void txtUsername_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void txtPassword_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
 }
