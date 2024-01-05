@@ -33,11 +33,9 @@ namespace Library.Models
         public string Identifiant { get; set; }//pour se connnecter
 
         // Mot de passe de l'employé (obligatoire avec un message d'erreur personnalisé si manquant)
-        [Required(ErrorMessage = "Le champ Mot de passe est requis.")]
+        // Mot de passe de l'adherent 
+        [RegularExpression(@"^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$", ErrorMessage = "Le mot de passe doit contenir au moins une lettre et un chiffre.")]
         public string MotDePasse { get; set; }
-
-        // Relation avec la table Reservation (un employé peut avoir plusieurs réservations)
-        //public ICollection<Reservation> Reservations { get; set; }
 
     }
 }

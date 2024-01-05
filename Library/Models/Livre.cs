@@ -28,7 +28,6 @@ namespace Library.Models
         [Required(ErrorMessage = "Le champ Disponible est requis.")]
         public bool Disponible { get; set; }
 
-        // Relation avec la table Reservation (un livre peut avoir plusieurs réservations)
-        //public ICollection<Reservation> Reservations { get; set; }
+        }
     }
 }
