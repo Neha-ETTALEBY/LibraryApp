@@ -24,42 +24,42 @@ namespace Library.Business
         }
 
         // Ajout d'un nouvel employé
-        public void AjouterEmploye(Employe employe)
+        public void CreateEmploye(Employe employe)
         {
             // Logique d'ajout d'un employé
             _employeDAO.AddEmploye(employe);
         }
 
         // Ajout d'un nouveau livre
-        public void AjouterLivre(Livre livre)
+        public void CreateLivre(Livre livre)
         {
             // Logique d'ajout d'un livre
             _livreDAO.AddLivre(livre);
         }
 
         // Consultation de tous les employés
-        /* public List<Employe> ConsulterEmployes()
+         public List<Employe> CheckEmployes()
          {
-             // Logique de consultation des employés
-             return null
-         }*/
+
+            return _employeDAO.GetAllEmployes();
+         }
 
         // Consultation de tous les livres
-        public List<Livre> ConsulterLivres()
+        public List<Livre>CheckLivres()
         {
             // Logique de consultation des livres
             return _livreDAO.GetLivres();
         }
 
         // Suppression d'un employé
-        public void SupprimerEmploye(int employeId)
+        public void RemoveEmploye(int employeId)
         {
             // Logique de suppression d'un employé
             _employeDAO.DeleteEmploye(employeId);
         }
 
         // Suppression d'un livre
-        public void SupprimerLivre(int livreId)
+        public void RemoveLivre(int livreId)
         {
             // Logique de suppression d'un livre
             _livreDAO.RemoveLivre(livreId);
