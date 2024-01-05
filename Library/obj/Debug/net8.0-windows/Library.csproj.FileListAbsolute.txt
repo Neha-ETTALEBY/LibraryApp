@@ -123,3 +123,11 @@ C:\Users\HP\Documents\4IIR\Dot_Net\LibraryApp\Library\bin\Debug\net8.0-windows\r
 C:\Users\HP\Documents\4IIR\Dot_Net\LibraryApp\Library\bin\Debug\net8.0-windows\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\HP\Documents\4IIR\Dot_Net\LibraryApp\Library\bin\Debug\net8.0-windows\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\HP\Documents\4IIR\Dot_Net\LibraryApp\Library\bin\Debug\net8.0-windows\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\HP\Documents\4IIR\Dot_Net\LibraryApp\Library\obj\Debug\net8.0-windows\GUI\FirstWindow.g.cs
+C:\Users\HP\Documents\4IIR\Dot_Net\LibraryApp\Library\obj\Debug\net8.0-windows\GUI\FirstWindow.baml
+C:\Users\HP\Documents\4IIR\Dot_Net\LibraryApp\Library\obj\Debug\net8.0-windows\GUI\AccueilWindow.g.cs
+C:\Users\HP\Documents\4IIR\Dot_Net\LibraryApp\Library\obj\Debug\net8.0-windows\GUI\InscriptionWindow.g.cs
+C:\Users\HP\Documents\4IIR\Dot_Net\LibraryApp\Library\obj\Debug\net8.0-windows\GUI\ConnexionWindow.g.cs
+C:\Users\HP\Documents\4IIR\Dot_Net\LibraryApp\Library\obj\Debug\net8.0-windows\GUI\AccueilWindow.baml
+C:\Users\HP\Documents\4IIR\Dot_Net\LibraryApp\Library\obj\Debug\net8.0-windows\GUI\InscriptionWindow.baml
+C:\Users\HP\Documents\4IIR\Dot_Net\LibraryApp\Library\obj\Debug\net8.0-windows\GUI\ConnexionWindow.baml

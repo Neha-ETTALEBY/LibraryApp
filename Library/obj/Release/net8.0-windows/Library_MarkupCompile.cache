@@ -10,11 +10,11 @@ none
 false
 TRACE;RELEASE;NET;NET8_0;NETCOREAPP
 C:\Users\HP\Documents\4IIR\Dot_Net\LibraryApp\Library\App.xaml
-11407045341
+2-1515782628
 
-2357042236
+24299670759
 2261892011936
-MainWindow.xaml;
+GUI\FirstWindow.xaml;MainWindow.xaml;
 
 True
 
