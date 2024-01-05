@@ -35,12 +35,16 @@ namespace Library.GUI
 
         private void AdminRolebtn_Click(object sender, RoutedEventArgs e)
         {
-
+            PersonnelStaffLogin admin = new PersonnelStaffLogin();
+            admin.Show();
+            Hide();
         }
 
         private void EmployerRoleBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            PersonnelStaffLogin admin = new PersonnelStaffLogin();
+            admin.Show();
+            Hide();
         }
     }
 }

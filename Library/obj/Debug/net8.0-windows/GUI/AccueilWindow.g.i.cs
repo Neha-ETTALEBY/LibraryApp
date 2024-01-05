@@ -69,7 +69,7 @@ namespace Library.GUI {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Library;V1.0.0.0;component/gui/accueilwindow.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Library;component/gui/accueilwindow.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\GUI\AccueilWindow.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
