@@ -76,5 +76,9 @@ namespace Library.DAO
             }
         }
 
+        internal Employe GetEmployeByIdentifiantPasswor(string identifiant, string motDePasse)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

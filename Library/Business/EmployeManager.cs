@@ -21,26 +21,26 @@ namespace Library.Business
         // Connexion d'un employé
         public Employe Connecter(string identifiant, string motDePasse)
         {
-            return _employeDAO.GetEmployeBy_identifiant_Password(identifiant,motDePasse);
+            return _employeDAO.GetEmployeByIdentifiantPassword(identifiant,motDePasse);
         }
 
 
         // Création d'un nouveau livre
-        public void CreerLivre(Livre livre)
+        public void CreateLivre(Livre livre)
         {
-            _livreDAO.AjouterLivre(livre);
+            _livreDAO.AddLivre(livre);
         }
 
         // Suppression d'un livre
-        public void SupprimerLivre(int livreId)
+        public void RemoveLivre(int livreId)
         {
-            _livreDAO.SupprimerLivre(livreId);
+            _livreDAO.RemoveLivre(livreId);
         }
         // Consultation de tous les livres
-        public List<Livre> ConsulterLivres()
+        public List<Livre> CheckLivres()
         {
             // Logique de consultation des livres
-            return _livreDAO.ObtenirTousLesLivres();
+            return _livreDAO.GetLivres();
         }
 
     }
