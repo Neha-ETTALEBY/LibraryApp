@@ -17,11 +17,22 @@ namespace Library.DAO
         {
             _dbcontext = context ?? throw new ArgumentNullException(nameof(context));
         }
+        public AdminDAO() { }
+
 
         // Méthode pour récupérer tous les administrateurs de la base de données
         public List<Admin> GetAllAdmins()
         {
             return _dbcontext.Admins.ToList();
+        }
+        //cette methode permet  aux admins de se connecter 
+        public bool GetAdmineByIdentifiantPassword(string identifiant, string motDePasse)
+        {
+            if(_dbcontext.Admins.Any(e => e.Identifiant == identifiant && e.MotDePasse == motDePasse)!=null)
+            {
+                return true;
+            }
+            return false;
         }
 
         // Méthode pour récupérer un administrateur par son ID
@@ -68,5 +79,7 @@ namespace Library.DAO
                 _dbcontext.SaveChanges(); // Sauvegarder les changements dans la base de données
             }
         }
+
+
     }
 }

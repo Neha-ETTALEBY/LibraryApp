@@ -22,7 +22,7 @@ namespace Library.Models
 
         [Required(ErrorMessage = "Le champ adresse est requis")]
         [EmailAddress(ErrorMessage = "Veuillez saisir un email valide")] //cette anotation vérifie la validité de l'emails
-        public string email { get; set; }
+        public string Email { get; set; }
         [Required(ErrorMessage = "Le champ telephone est requis")]
 
         // Mot de passe de l'adherent 

@@ -17,10 +17,15 @@ namespace Library.DAO
         {
             _dbcontext = context ?? throw new ArgumentNullException(nameof(context));
         }
+        public EmployeDAO() { }
         //cherche  si identifiant et mdp est dans  database pour qu'il puisse se connecter
-        public Employe GetEmployeByIdentifiantPassword(string identifiant, string motDePasse)
+        public bool GetEmployeByIdentifiantPassword(string identifiant, string motDePasse)
         {
-            return _dbcontext.Employees.SingleOrDefault(e => e.Identifiant == identifiant && e.MotDePasse == motDePasse);
+            if (_dbcontext.Admins.Any(e => e.Identifiant == identifiant && e.MotDePasse == motDePasse) != null)
+            {
+                return true;
+            }
+            return false;
         }
 
 

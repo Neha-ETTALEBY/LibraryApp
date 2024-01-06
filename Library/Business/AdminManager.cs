@@ -10,7 +10,7 @@ namespace Library.Business
 {
     internal class AdminManager
     {
-        AdminDAO _adminDAO;
+        readonly AdminDAO _adminDAO;
         private readonly EmployeDAO _employeDAO;
         private readonly LivreDAO _livreDAO;
         private readonly ReservationDAO _reservationDAO;
@@ -21,6 +21,15 @@ namespace Library.Business
             _employeDAO = employeDAO;
             _livreDAO = livreDAO;
             _reservationDAO = reservationDAO;
+        }
+        public AdminManager(LibraryDBContext dbContext)
+        {
+            _adminDAO = new AdminDAO(dbContext);
+        }
+        // Connexion d'un Admin
+        public bool Connecter(string identifiant, string motDePasse)
+        {
+            return _adminDAO.GetAdmineByIdentifiantPassword(identifiant, motDePasse);
         }
 
         // Ajout d'un nouvel employé

@@ -53,9 +53,9 @@
             <TextBlock Text="Cet espace est réservé au personnel" FontSize="16" FontWeight="Bold" Margin="0,0,0,20"/>
 
             <Label Content="Identifiant" />
-            <TextBox Name="txtUsername" TextChanged="txtUsername_TextChanged" />
+            <TextBox Name="UsernameTxt" TextChanged="UsernameTxt_TextChanged" />
             <Label Content="Mot de passe" />
-            <TextBox Name="txtPassword" TextChanged="txtPassword_TextChanged" />
+            <TextBox Name="PasswordTxt" TextChanged="PasswordTxt_TextChanged" />
 
             <Button Content="Connecter" Margin="0,10" Click="ConnecterBtn_Click" Height="25" Width="78" />
   

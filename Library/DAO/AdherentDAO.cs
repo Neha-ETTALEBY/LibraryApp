@@ -15,8 +15,10 @@ namespace Library.DAO
         // Ce design pattern est appele dependency injection
         public AdherentDAO(LibraryDBContext context)
         {
-            _dbContext = context;
+            _dbContext = context ?? throw new ArgumentNullException(nameof(context));
+
         }
+        public AdherentDAO() { }    
         // la méthode pour ajouter un adherent
 
         public void AddAdherent(Adherent adherent)

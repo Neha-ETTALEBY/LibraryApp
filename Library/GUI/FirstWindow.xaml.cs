@@ -19,6 +19,7 @@ namespace Library.GUI
     /// </summary>
     public partial class FirstWindow : Window
     {
+        private string _roleChoisi;//pour stocker  le role choisi
         public FirstWindow()
         {
             InitializeComponent();
@@ -35,14 +36,16 @@ namespace Library.GUI
 
         private void AdminRolebtn_Click(object sender, RoutedEventArgs e)
         {
-            PersonnelStaffLogin admin = new PersonnelStaffLogin();
+            _roleChoisi = "Admin";
+            PersonnelStaffLogin admin = new PersonnelStaffLogin(_roleChoisi);
             admin.Show();
             Hide();
         }
 
         private void EmployerRoleBtn_Click(object sender, RoutedEventArgs e)
         {
-            PersonnelStaffLogin admin = new PersonnelStaffLogin();
+            _roleChoisi = "Employe";
+            PersonnelStaffLogin admin = new PersonnelStaffLogin(_roleChoisi);
             admin.Show();
             Hide();
         }

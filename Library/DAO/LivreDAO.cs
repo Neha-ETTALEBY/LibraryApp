@@ -16,6 +16,7 @@ namespace Library.DAO
         {
             _dbContext = context;
         }
+        public LivreDAO() { }   
         // la méthode pour ajouter un livre
 
         public void AddLivre(Livre livre)

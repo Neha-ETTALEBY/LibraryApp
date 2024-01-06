@@ -11,6 +11,9 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Library.Business;
+using Library.Models;
+using Library.DAO;
 
 namespace Library.GUI
 {
@@ -19,24 +22,58 @@ namespace Library.GUI
     /// </summary>
     public partial class PersonnelStaffLogin : Window
     {
-        public PersonnelStaffLogin()
+        private string _roleChoisi;//pour savoir le role choisi dans FirstWindow
+
+        LibraryDBContext dbContext = new LibraryDBContext();
+        AdminManager _adminManager;
+        EmployeManager _employeManager;
+       // Créez une instance de LibraryDBContext et passez-la à AdminManager
+
+        public PersonnelStaffLogin(String role_choisi)
         {
+         
             InitializeComponent();
+           _roleChoisi = role_choisi;
+            _adminManager = new AdminManager(dbContext);
+            _employeManager =new EmployeManager(dbContext);
         }
 
         private void ConnecterBtn_Click(object sender, RoutedEventArgs e)
         {
+            string username = UsernameTxt.Text;
+            string password = PasswordTxt.Text;
+           
+
+            if (_roleChoisi == "Admin" && _adminManager.Connecter(username, password))
+            {
+                MessageBox.Show("Connecté en tant qu'admin");
+                // Effectuez l'action spécifique pour l'admin connecté
+            }
+   
+            else if (_roleChoisi == "Employe" && _employeManager.Connecter(username,password))
+            {
+                MessageBox.Show("Connecté en tant qu'employé");
+                // Effectuez l'action spécifique pour l'employé connecté
+            }
+            else
+            {
+                MessageBox.Show("Échec de la connexion");
+            }
+
+
+
 
         }
 
-        private void txtUsername_TextChanged(object sender, TextChangedEventArgs e)
+        private void PasswordTxt_TextChanged(object sender, TextChangedEventArgs e)
         {
 
         }
 
-        private void txtPassword_TextChanged(object sender, TextChangedEventArgs e)
+        private void UsernameTxt_TextChanged(object sender, TextChangedEventArgs e)
         {
 
         }
     }
 }
+            

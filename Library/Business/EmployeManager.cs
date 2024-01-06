@@ -17,9 +17,13 @@ namespace Library.Business
             _livreDAO = livreDAO;
             _reservationDAO = reservationDAO;
         }
+        public EmployeManager(LibraryDBContext dbContext)
+        {
+            _employeDAO = new EmployeDAO(dbContext);
+        }
 
         // Connexion d'un employé
-        public Employe Connecter(string identifiant, string motDePasse)
+        public bool Connecter(string identifiant, string motDePasse)
         {
             return _employeDAO.GetEmployeByIdentifiantPassword(identifiant,motDePasse);
         }
