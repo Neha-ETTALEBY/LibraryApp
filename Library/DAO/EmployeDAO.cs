@@ -10,22 +10,30 @@ namespace Library.DAO
     internal class EmployeDAO
     {
         private readonly LibraryDBContext _dbcontext;
+       
 
         // Constructeur qui reçoit le contexte de base de données pour avoir une référence 
         // Ce design pattern est appele dependency injection
         public EmployeDAO(LibraryDBContext context)
         {
-            _dbcontext = context ?? throw new ArgumentNullException(nameof(context));
+            _dbcontext = context;
         }
-        public EmployeDAO() { }
+       
         //cherche  si identifiant et mdp est dans  database pour qu'il puisse se connecter
         public bool GetEmployeByIdentifiantPassword(string identifiant, string motDePasse)
         {
-            if (_dbcontext.Admins.Any(e => e.Identifiant == identifiant && e.MotDePasse == motDePasse) != null)
+            if (_dbcontext.Employees.Any(e => e.Identifiant == identifiant && e.MotDePasse == motDePasse) != null)
             {
                 return true;
             }
             return false;
+        }
+        public bool GetOnlyIdentifiantEmploye(string identifiant)
+        {
+            // Vérifier si un employé avec l'identifiant donné existe dans la base de données
+            bool identifiantExists = _dbcontext.Employees.Any(e => e.Identifiant == identifiant);
+
+            return identifiantExists;
         }
 
 
@@ -53,26 +61,46 @@ namespace Library.DAO
         }
 
         // Méthode pour mettre à jour les informations d'un employé existant
-        public void UpdateEmploye(Employe employe)
+        public bool UpdateEmploye(Employe employe)
         {
             if (employe == null)
                 throw new ArgumentNullException(nameof(employe));
 
-            // Rechercher l'employé existant par son ID
-            var existingEmploye = _dbcontext.Employees.Find(employe.IdEmploye); //chercher l'employe dans la bd s'il existe
-
-            if (existingEmploye != null)
+            try
             {
-                _dbcontext.Employees.Update(existingEmploye);
-                _dbcontext.SaveChanges(); // Sauvegarder les changements dans la base de données
+                // Rechercher l'employé existant par son ID
+                var existingEmploye = _dbcontext.Employees.Find(employe.IdEmploye);
+
+                if (existingEmploye != null)
+                {
+                    // Mettre à jour les propriétés de l'employé existant avec les nouvelles valeurs
+                    existingEmploye.Nom = employe.Nom;
+                    existingEmploye.Prenom = employe.Prenom;
+                    existingEmploye.AdresseEmail = employe.AdresseEmail;
+                    existingEmploye.MotDePasse = employe.MotDePasse;
+                    existingEmploye.Identifiant = employe.Identifiant;
+
+                    // Enregistrer les modifications dans la base de données
+                    _dbcontext.SaveChanges();
+
+                    return true;
+                }
+
+                return false; // L'employé n'a pas été trouvé dans la base de données
+            }
+            catch (Exception ex)
+            {
+                // Gérer l'exception ou la renvoyer pour un traitement ultérieur
+                Console.WriteLine("Exception: " + ex.Message);
+                return false;
             }
         }
 
         // Méthode pour supprimer un employé de la base de données par son ID
-        public void DeleteEmploye(int employeId)
+        public void DeleteEmploye(Employe employe)
         {
             // Rechercher l'employé à supprimer par son ID
-            var employeToDelete = _dbcontext.Employees.Find(employeId);
+            var employeToDelete = _dbcontext.Employees.FirstOrDefault(e => e.IdEmploye == employe.IdEmploye);
 
             if (employeToDelete != null)
             {
@@ -81,9 +109,6 @@ namespace Library.DAO
             }
         }
 
-        internal Employe GetEmployeByIdentifiantPasswor(string identifiant, string motDePasse)
-        {
-            throw new NotImplementedException();
-        }
+       
     }
 }

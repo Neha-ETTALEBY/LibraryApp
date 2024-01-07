@@ -10,15 +10,16 @@ namespace Library.DAO
 {
     internal class AdminDAO
     {
-        private readonly LibraryDBContext _dbcontext;// Référence vers le contexte de la base de données pour effectuer des opérations CRUD.
+        private  LibraryDBContext _dbcontext { get; }// Référence vers le contexte de la base de données pour effectuer des opérations CRUD.
+
+        //L'objet dbContext encapsule la connexion à la base de données + l'underscore c'est une convention de codage pour dire que c'est un champ de classe
 
         // Constructeur qui reçoit le contexte de base de données
         public AdminDAO(LibraryDBContext context)
         {
             _dbcontext = context ?? throw new ArgumentNullException(nameof(context));
         }
-        public AdminDAO() { }
-
+       
 
         // Méthode pour récupérer tous les administrateurs de la base de données
         public List<Admin> GetAllAdmins()

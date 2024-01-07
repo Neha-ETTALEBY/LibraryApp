@@ -34,8 +34,8 @@ namespace Library.GUI
          
             InitializeComponent();
            _roleChoisi = role_choisi;
-            _adminManager = new AdminManager(dbContext);
-            _employeManager =new EmployeManager(dbContext);
+            _adminManager = new AdminManager(new AdminDAO(dbContext));
+            _employeManager =new EmployeManager(new EmployeDAO(dbContext));
         }
 
         private void ConnecterBtn_Click(object sender, RoutedEventArgs e)
@@ -48,6 +48,9 @@ namespace Library.GUI
             {
                 MessageBox.Show("Connecté en tant qu'admin");
                 // Effectuez l'action spécifique pour l'admin connecté
+                AdminWindowCRUD adminWindowCRUD = new AdminWindowCRUD();
+                adminWindowCRUD.Show();
+                Hide();
             }
    
             else if (_roleChoisi == "Employe" && _employeManager.Connecter(username,password))
@@ -60,7 +63,7 @@ namespace Library.GUI
                 MessageBox.Show("Échec de la connexion");
             }
 
-
+            //     LivreManager l = new LivreManager(new LivreDAO(conn));
 
 
         }

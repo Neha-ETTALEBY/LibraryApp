@@ -8,14 +8,12 @@ namespace Library.Business
     internal class EmployeManager
     {
         private readonly EmployeDAO _employeDAO;
-        private readonly LivreDAO _livreDAO;
-        private readonly ReservationDAO _reservationDAO;
 
-        public EmployeManager(EmployeDAO employeDAO, LivreDAO livreDAO, ReservationDAO reservationDAO)
+
+        public EmployeManager(EmployeDAO employeDAO)
         {
             _employeDAO = employeDAO;
-            _livreDAO = livreDAO;
-            _reservationDAO = reservationDAO;
+ 
         }
         public EmployeManager(LibraryDBContext dbContext)
         {
@@ -32,18 +30,20 @@ namespace Library.Business
         // Création d'un nouveau livre
         public void CreateLivre(Livre livre)
         {
+            LivreDAO _livreDAO = new LivreDAO(new LibraryDBContext());
             _livreDAO.AddLivre(livre);
         }
 
         // Suppression d'un livre
         public void RemoveLivre(int livreId)
         {
+            LivreDAO _livreDAO = new LivreDAO(new LibraryDBContext());
             _livreDAO.RemoveLivre(livreId);
         }
         // Consultation de tous les livres
         public List<Livre> CheckLivres()
         {
-            // Logique de consultation des livres
+            LivreDAO _livreDAO = new LivreDAO(new LibraryDBContext());
             return _livreDAO.GetLivres();
         }
 

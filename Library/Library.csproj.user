@@ -10,6 +10,9 @@
     <Compile Update="GUI\AdminEspace.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="GUI\AdminWindowCRUD.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="GUI\FirstWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -19,6 +22,9 @@
   </ItemGroup>
   <ItemGroup>
     <Page Update="GUI\AdminEspace.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="GUI\AdminWindowCRUD.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="GUI\FirstWindow.xaml">
