@@ -152,7 +152,9 @@ namespace Library.GUI
 
         private void GestionLivre(object sender, RoutedEventArgs e)
         {
-
+            PersonnelStaffLivreCRUD personnelStaffLivreCRUD = new PersonnelStaffLivreCRUD();
+            personnelStaffLivreCRUD.Show();
+            Hide();
         }
 
         private void GestionEmploye(object sender, RoutedEventArgs e)

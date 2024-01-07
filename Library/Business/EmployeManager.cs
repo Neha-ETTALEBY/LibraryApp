@@ -35,7 +35,7 @@ namespace Library.Business
         }
 
         // Suppression d'un livre
-        public void RemoveLivre(int livreId)
+        public void RemoveLivre(Livre livreId)
         {
             LivreDAO _livreDAO = new LivreDAO(new LibraryDBContext());
             _livreDAO.RemoveLivre(livreId);

@@ -42,12 +42,11 @@ namespace Library.Business
         public bool UpdateEmploye(Employe e)
         {
             EmployeDAO _employeDAO = new EmployeDAO(new LibraryDBContext());
-            if (CheckIdentifiantEmployeExists(e.Identifiant))
-                return false;
-          else 
+           
               return   _employeDAO.UpdateEmploye(e);
 
         }
+        //pour consulter est ce identifiant est deja existe cette methode  a pour objectif d'avoir un identifiant  unique
         public bool CheckIdentifiantEmployeExists(String identifiant)
             {
             EmployeDAO _employeDAO = new EmployeDAO(new LibraryDBContext());
@@ -60,6 +59,14 @@ namespace Library.Business
 
             return _employeDAO.GetAllEmployes();
          }
+        // Suppression d'un employé
+        public void RemoveEmploye(Employe employe)
+        {
+            EmployeDAO _employeDAO = new EmployeDAO(new LibraryDBContext());
+
+            // Logique de suppression d'un employé
+            _employeDAO.DeleteEmploye(employe);
+        }
 
         // Consultation de tous les livres
         public List<Livre>CheckLivres()
@@ -70,24 +77,24 @@ namespace Library.Business
             return _livreDAO.GetLivres();
         }
 
-        // Suppression d'un employé
-        public void RemoveEmploye(Employe employe)
-        {
-            EmployeDAO _employeDAO = new EmployeDAO(new LibraryDBContext());
-
-            // Logique de suppression d'un employé
-            _employeDAO.DeleteEmploye(employe);
-        }
+       
 
         // Suppression d'un livre
-        public void RemoveLivre(int livreId)
+        public void RemoveLivre(Livre livre)
         {
             LivreDAO _livreDAO = new LivreDAO(new LibraryDBContext());
 
             // Logique de suppression d'un livre
-            _livreDAO.RemoveLivre(livreId);
+            _livreDAO.RemoveLivre(livre);
         }
 
+        //modification d'un livre 
+        public bool UpdateLivre(Livre livre)
+        {
+            LivreDAO _livreDAO = new LivreDAO(new LibraryDBContext());
+           return  _livreDAO.UpdateLivre(livre);
+
+        }
         // Autres méthodes pour la gestion des réservations, des admins, etc.
     }
 }

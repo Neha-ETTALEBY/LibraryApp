@@ -46,7 +46,7 @@ namespace Library.GUI
 
             if (_roleChoisi == "Admin" && _adminManager.Connecter(username, password))
             {
-                MessageBox.Show("Connecté en tant qu'admin");
+                MessageBox.Show("Connecté en tant qu'admin","Succés");
                 // Effectuez l'action spécifique pour l'admin connecté
                 AdminWindowCRUD adminWindowCRUD = new AdminWindowCRUD();
                 adminWindowCRUD.Show();
@@ -55,12 +55,12 @@ namespace Library.GUI
    
             else if (_roleChoisi == "Employe" && _employeManager.Connecter(username,password))
             {
-                MessageBox.Show("Connecté en tant qu'employé");
+                MessageBox.Show("Connecté en tant qu'employé","Succés");
                 // Effectuez l'action spécifique pour l'employé connecté
             }
             else
             {
-                MessageBox.Show("Échec de la connexion");
+                MessageBox.Show("Échec de la connexion","Erreur");
             }
 
             //     LivreManager l = new LivreManager(new LivreDAO(conn));

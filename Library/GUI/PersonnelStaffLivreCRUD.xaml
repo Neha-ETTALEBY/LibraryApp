@@ -1,0 +1,124 @@
+﻿<Window x:Class="Library.GUI.PersonnelStaffLivreCRUD"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        mc:Ignorable="d"
+        Title="AdminWindowCRUD" Height="623" Width="1224">
+    <Window.Resources>
+        <!-- Balise pour créer une vue filtrée, triée ou regroupée de la collection de Livres -->
+
+        <CollectionViewSource x:Key="LivresViewSource" Source="{Binding Livres}" />
+
+        <!-- Style pour les boutons -->
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="#517486"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Margin" Value="0,0,5,0"/>
+            <Setter Property="Width" Value="80"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="BorderBrush" Value="#517486"/>
+            <Setter Property="Padding" Value="5"/>
+            <Style.Triggers>
+                <!-- Effet au survol -->
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#6287A4"/>
+                    <Setter Property="BorderBrush" Value="#6287A4"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <!-- Menu à gauche -->
+        <StackPanel Grid.Column="0" Background="#517486" Width="200">
+            <TextBlock Text="Hello" Margin="10" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="White" FontSize="20" />
+
+            <Grid Margin="10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <Button Content="Gestion Livre" Grid.Row="0" Click="GestionLivre" Background="#517486" Foreground="White"
+                BorderThickness="2" BorderBrush="White" Padding="8" Width="150" />
+
+                <Button Content="Gestion Employé" Grid.Row="1" Click="GestionEmploye" Background="#517486" Foreground="White"
+                BorderThickness="2" BorderBrush="White" Padding="8" Width="150" Height="36" Margin="12,0,18,0" VerticalAlignment="Top" />
+            </Grid>
+        </StackPanel>
+
+        <!-- Grille principale avec deux lignes -->
+        <Grid Grid.Column="1" Margin="10"  >
+            <Grid.RowDefinitions>
+                <!-- Ligne pour la partie supérieure avec le DataGrid -->
+                <RowDefinition Height="*" />
+                <!-- Ligne pour la partie inférieure avec les inputs et les boutons -->
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <!-- Partie supérieure -->
+            <StackPanel Grid.Row="0">
+                <TextBlock Text="Books's Data" Margin="0,0,0,10" FontSize="20" FontWeight="Bold" />
+                <!-- Conteneur ScrollViewer pour rendre la liste scrollable -->
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <ListView x:Name="livresListView" ItemsSource="{Binding Source={StaticResource LivresViewSource}}">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="IdLivre" DisplayMemberBinding="{Binding Path=IdLivre}" />
+                                <GridViewColumn Header="Titre" DisplayMemberBinding="{Binding Path=Titre}" />
+                                <GridViewColumn Header="Auteur " DisplayMemberBinding="{Binding Path=Auteur}" />
+                                <GridViewColumn Header="Editeur" DisplayMemberBinding="{Binding Path=Editeur}" />
+                                <GridViewColumn Header="AnneePublication" DisplayMemberBinding="{Binding Path=AnneePublication}" />
+                                <GridViewColumn Header="Categorie" DisplayMemberBinding="{Binding Path=Categorie}" />
+                                <GridViewColumn Header="Disponible" DisplayMemberBinding="{Binding Path=Disponible}" />
+                                <GridViewColumn Header="Image" DisplayMemberBinding="{Binding Path=Image}" />
+
+
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </ScrollViewer>
+            </StackPanel>
+            <!-- Partie inférieure -->
+            <StackPanel Grid.Row="1" Margin="0,10" VerticalAlignment="Bottom">
+                <!-- Inputs et boutons -->
+                <StackPanel Margin="0,10">
+                    <TextBlock Text="Titre :" Margin="0,0,0,5" />
+                    <TextBox x:Name="TitreTextBox" Margin="0,0,0,5" Text="{Binding SelectedItem.Titre, ElementName=livresListView}" Width="200" TextChanged="TitreTxtBox_TextChanged" />
+
+                    <TextBlock Text="Auteur :" Margin="0,0,0,5" />
+                    <TextBox x:Name="AuteurTextBox" Margin="0,0,0,5" Text="{Binding SelectedItem.Auteur ,ElementName=livresListView}" Width="200" TextChanged="AuteurTextBox_TextChanged" />
+
+                    <TextBlock Text="Editeur:" Margin="0,0,0,5" />
+                    <TextBox x:Name="EditeurTextBox" Margin="0,0,0,5" Text="{Binding SelectedItem.Editeur,ElementName=livresListView}" Width="200" TextChanged="EditeurTextBox_TextChanged" />
+
+                    <TextBlock Text="AnneePublication :" Margin="0,0,0,5" />
+                    <TextBox x:Name="AnneePubTextBox" Margin="0,0,0,5" Text="{Binding SelectedItem.AnneePublication,ElementName=livresListView}" Width="200" TextChanged="AnneePubTextBox_TextChanged" />
+
+                    <TextBlock Text="Categorie :" Margin="0,0,0,5" />
+                    <TextBox x:Name="CategorieTextBox" Margin="0,0,0,5" Text="{Binding SelectedItem.Categorie,ElementName=livresListView}" Width="200" TextChanged="CategorieTextBox_TextChanged" />
+
+                    <TextBlock Text="Disponible :" Margin="0,0,0,5" />
+                    <TextBox x:Name="DisponibleTextBox" Margin="0,0,0,5" Text="{Binding SelectedItem.Disponible,ElementName=livresListView}" Width="200" TextChanged="DisponibleTextBox_TextChanged" />
+                    
+                    <TextBlock Text="Chemin :" Margin="0,0,0,5" />
+                    <TextBox x:Name="cheminFichierTextBox" Margin="0,0,0,5" Text="{Binding SelectedItem.Image,ElementName=livresListView}" Width="200" TextChanged="ImageTextBox_TextChanged" />
+
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Button Content="Ajouter" Click="AjouterLivre" />
+                        <Button Content="Supprimer" Click="SupprimerLivre" />
+                        <Button Content="Modifier" Click="ModifierLivre" />
+                        <Button Content="Choisir un fichier" Click="ChoisirFichier_Click" Width="100" />
+
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>

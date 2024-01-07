@@ -23,17 +23,18 @@ namespace Library.Business
         {
             return _livreDAO.GetLivreByID(id);
         }
-        public void UpdateLivre(Livre livre)
+        public bool UpdateLivre(Livre livre)
         {
-            _livreDAO.UpdateLivre(livre);
+            return _livreDAO.UpdateLivre(livre);
         }
         public List<Livre> GetAllLivre()
         {
             return _livreDAO.GetLivres();
         }
-        public void RemoveLivre(int id)
+    
+        public void RemoveLivre(Livre l)
         {
-            _livreDAO.RemoveLivre(id);
+            _livreDAO.RemoveLivre(l);
         }
     }
 }

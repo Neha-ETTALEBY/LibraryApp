@@ -27,6 +27,7 @@ namespace Library.Models
 
         [Required(ErrorMessage = "Le champ Disponible est requis.")]
         public bool Disponible { get; set; }
+        public byte[] Image { get; set; }
 
         }
     }

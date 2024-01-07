@@ -30,16 +30,41 @@ namespace Library.DAO
             return _dbContext.Livres.FirstOrDefault(l => l.IdLivre == id); // lambda expression, default = null, "a" parameter represents each livre in the table
         }
         //  la methode qui fait l'update d'un livre en se basant de son id
-        public void UpdateLivre(Livre updatedLivre)
+        public bool UpdateLivre(Livre updatedLivre)
         {
             if (updatedLivre == null)
                 throw new ArgumentNullException(nameof(updatedLivre));
 
-            var updatedLi = _dbContext.Livres.Find(updatedLivre.IdLivre); //On cherche  l'id du element passé au parametre s'il existe dans la db
-            if (updatedLi != null)
+            try
             {
-                _dbContext.Livres.Update(updatedLivre);
-                _dbContext.SaveChanges();
+                // Rechercher l'employé existant par son ID
+                var existingLivre = _dbContext.Livres.Find(updatedLivre.IdLivre);
+
+                if (existingLivre != null)
+                {
+                    // Mettre à jour les propriétés de l'employé existant avec les nouvelles valeurs
+                    existingLivre.Titre = updatedLivre.Titre;
+                    existingLivre.Auteur = updatedLivre.Auteur;
+                    existingLivre.Editeur = updatedLivre.Editeur;
+                    existingLivre.AnneePublication = updatedLivre.AnneePublication;
+                    existingLivre.Categorie = updatedLivre.Categorie;
+                    existingLivre.Disponible = updatedLivre.Disponible;
+                    existingLivre.Image = updatedLivre.Image;
+
+
+                    // Enregistrer les modifications dans la base de données
+                    _dbContext.SaveChanges();
+
+                    return true;
+                }
+
+                return false; // L'employé n'a pas été trouvé dans la base de données
+            }
+            catch (Exception ex)
+            {
+                // Gérer l'exception ou la renvoyer pour un traitement ultérieur
+                Console.WriteLine("Exception: " + ex.Message);
+                return false;
             }
         }
         // pour afficher tous les adherents
@@ -49,9 +74,9 @@ namespace Library.DAO
 
         }
         //pour supprimer un livre en se basant de son id
-        public void RemoveLivre(int id)
+        public void RemoveLivre(Livre livre)
         {
-            var LivreToRemove = _dbContext.Livres.Find(id);
+            var LivreToRemove = _dbContext.Livres.FirstOrDefault(l=>l.IdLivre==livre.IdLivre);
             if (LivreToRemove != null)
             {
                 _dbContext.Livres.Remove(LivreToRemove);
