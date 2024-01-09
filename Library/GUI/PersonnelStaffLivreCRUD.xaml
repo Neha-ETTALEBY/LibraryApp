@@ -13,20 +13,29 @@
 
         <!-- Style pour les boutons -->
         <Style TargetType="Button">
-            <Setter Property="Background" Value="#517486"/>
+            <Setter Property="Background" Value="#42c6e1"/>
             <Setter Property="Foreground" Value="White"/>
             <Setter Property="Margin" Value="0,0,5,0"/>
             <Setter Property="Width" Value="80"/>
             <Setter Property="BorderThickness" Value="1"/>
             <Setter Property="BorderBrush" Value="#517486"/>
             <Setter Property="Padding" Value="5"/>
-            <Style.Triggers>
-                <!-- Effet au survol -->
-                <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="#6287A4"/>
-                    <Setter Property="BorderBrush" Value="#6287A4"/>
-                </Trigger>
-            </Style.Triggers>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="5">
+                            <ContentPresenter HorizontalAlignment="Center"
+                                      VerticalAlignment="Center"
+                                      Margin="{TemplateBinding Padding}"
+                                      Content="{TemplateBinding Content}"
+                                      ContentTemplate="{TemplateBinding ContentTemplate}"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
         </Style>
     </Window.Resources>
     <Grid>
@@ -36,8 +45,9 @@
         </Grid.ColumnDefinitions>
 
         <!-- Menu à gauche -->
-        <StackPanel Grid.Column="0" Background="#517486" Width="200">
-            <TextBlock Text="Hello" Margin="10" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="White" FontSize="20" />
+        <StackPanel Grid.Column="0" Background="#42c6e1" Width="200">
+            <Image Source="C:\Users\HP\Documents\4IIR\Dot_Net\LibraryApp\Library\GUI\iconStaff_.png" Width="60" Height="60" Margin="0,10,0,0" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+            <TextBlock Text="Welcome User !" Margin="10" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="White" FontSize="25" FontWeight="Bold" FontFamily="Global User Interface" />
 
             <Grid Margin="10">
                 <Grid.RowDefinitions>
@@ -45,10 +55,10 @@
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
 
-                <Button Content="Gestion Livre" Grid.Row="0" Click="GestionLivre" Background="#517486" Foreground="White"
-                BorderThickness="2" BorderBrush="White" Padding="8" Width="150" />
+                <Button Content="Gestion Livre" Grid.Row="0" Click="GestionLivre" Background="#42c6e1" Foreground="White"
+                BorderThickness="2" BorderBrush="White" Padding="8" Width="150"  Margin="12,0,18,8" />
 
-                <Button Content="Gestion Employé" Grid.Row="1" Click="GestionEmploye" Background="#517486" Foreground="White"
+                <Button Content="Gestion Employé" Grid.Row="1" Click="GestionEmploye" Background="#42c6e1" Foreground="White"
                 BorderThickness="2" BorderBrush="White" Padding="8" Width="150" Height="36" Margin="12,0,18,0" VerticalAlignment="Top" />
             </Grid>
         </StackPanel>

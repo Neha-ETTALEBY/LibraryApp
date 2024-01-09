@@ -33,7 +33,8 @@ namespace Library.GUI
         {
          
             InitializeComponent();
-           _roleChoisi = role_choisi;
+            
+            _roleChoisi = role_choisi;
             _adminManager = new AdminManager(new AdminDAO(dbContext));
             _employeManager =new EmployeManager(new EmployeDAO(dbContext));
         }
@@ -41,29 +42,35 @@ namespace Library.GUI
         private void ConnecterBtn_Click(object sender, RoutedEventArgs e)
         {
             string username = UsernameTxt.Text;
-            string password = PasswordTxt.Text;
-           
+            string password = PasswordTxt.Password;
+             if (username!="" && password !="")
+            {
+                if (_roleChoisi == "Admin" && _adminManager.Connecter(username, password))
+                {
+                    MessageBox.Show("Connecté en tant qu'admin", "Succés");
+                    // Effectuez l'action spécifique pour l'admin connecté
+                    AdminWindowCRUD adminWindowCRUD = new AdminWindowCRUD();
+                    adminWindowCRUD.Show();
+                    Hide();
+                }
 
-            if (_roleChoisi == "Admin" && _adminManager.Connecter(username, password))
-            {
-                MessageBox.Show("Connecté en tant qu'admin","Succés");
-                // Effectuez l'action spécifique pour l'admin connecté
-                AdminWindowCRUD adminWindowCRUD = new AdminWindowCRUD();
-                adminWindowCRUD.Show();
-                Hide();
+                else if (_roleChoisi == "Employe" && _employeManager.Connecter(username, password))
+                {
+                    MessageBox.Show("Connecté en tant qu'employé", "Succés");
+                    // Effectuez l'action spécifique pour l'employé connecté
+                }
+                else
+                {
+                    MessageBox.Show("Échec de la connexion", "Erreur");
+                }
             }
-   
-            else if (_roleChoisi == "Employe" && _employeManager.Connecter(username,password))
+             else
             {
-                MessageBox.Show("Connecté en tant qu'employé","Succés");
-                // Effectuez l'action spécifique pour l'employé connecté
-            }
-            else
-            {
-                MessageBox.Show("Échec de la connexion","Erreur");
+                MessageBox.Show("Please fill in all the required fields.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
             }
 
-            //     LivreManager l = new LivreManager(new LivreDAO(conn));
+
 
 
         }

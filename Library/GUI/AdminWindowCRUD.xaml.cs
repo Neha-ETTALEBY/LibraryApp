@@ -74,14 +74,16 @@ namespace Library.GUI
 
                 // Ajout du nouvel employé dans la base de données
                 _adminManager.CreateEmploye(nouvelEmploye);
-                ViderChamps();
+
 
                 // Afficher un message de succès ou effectuer d'autres actions nécessaires
-                MessageBox.Show("L'employé a été ajouté avec succès.");
+                MessageBox.Show("L'employé a été ajouté avec succès.");    
+             
                 List<Employe> employees = _adminManager.CheckEmployes();
                 // Récupérer la référence à l'objet CollectionViewSource depuis les ressources et définir la source de données
                 CollectionViewSource employeesViewSource = (CollectionViewSource)Resources["EmployeesViewSource"];
-                employeesViewSource.Source = employees;
+                employeesViewSource.Source = employees;  
+                ViderChamps();
             }
             else
             {

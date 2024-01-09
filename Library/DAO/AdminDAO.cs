@@ -29,7 +29,7 @@ namespace Library.DAO
         //cette methode permet  aux admins de se connecter 
         public bool GetAdmineByIdentifiantPassword(string identifiant, string motDePasse)
         {
-            if(_dbcontext.Admins.Any(e => e.Identifiant == identifiant && e.MotDePasse == motDePasse)!=null)
+            if(_dbcontext.Admins.Any(e => e.Identifiant == identifiant && e.MotDePasse == motDePasse))
             {
                 return true;
             }
