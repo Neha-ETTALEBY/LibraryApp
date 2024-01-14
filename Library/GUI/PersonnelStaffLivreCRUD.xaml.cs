@@ -52,11 +52,10 @@ namespace Library.GUI
         {
            TitreTextBox.Text = "";
            AuteurTextBox.Text = "";
-            EditeurTextBox.Text = "";
-            AnneePubTextBox.Text = "";
             CategorieTextBox.Text = "";
             DisponibleTextBox.Text = "";
             cheminFichierTextBox.Text = "";
+            DescTextBox.Text = "";
         }
 
 
@@ -76,25 +75,24 @@ namespace Library.GUI
         {
             // Récupérer les données des inputs
             string titre = TitreTextBox.Text;
-            string auteur = AnneePubTextBox.Text;
-            string editeur = EditeurTextBox.Text;
-            string anneepublication = AnneePubTextBox.Text;
+            string auteur=AuteurTextBox.Text;
             string categorie = CategorieTextBox.Text;
-            string disponible = DisponibleTextBox.Text.ToLower();
+            string disponible = DisponibleTextBox.Text;
             string cheminFichier = cheminFichierTextBox.Text;
-            if (titre != "" && auteur != "" && editeur != "" && anneepublication != "" && categorie != "" && disponible!="" && cheminFichier!="")
+            string description=DescTextBox.Text;
+            if (titre != "" && auteur != "" && categorie != "" && disponible!="" && cheminFichier!="" && description!="")
             {
                 // Création d'un nouvel employé avec les données récupérées
                 Livre nouvelLivre = new Livre()
                 {
                     Titre = titre,
                     Auteur = auteur,
-                    Editeur = editeur,
-                    AnneePublication = int.Parse(anneepublication),
+                
                     Categorie = categorie,
-                    Disponible = (disponible == "oui") ? true : (disponible == "non") ? false : default(bool),
+                    Disponible =disponible,
                     // Utilisez ReadAllBytes pour lire le contenu du fichier en tant qu'array de bytes
-                    Image = File.ReadAllBytes(cheminFichier) //Assurez-vous d'avoir using System.IO
+                    Image = File.ReadAllBytes(cheminFichier), //Assurez-vous d'avoir using System.IO
+                    Description=description
                 };
 
                 _adminManager.CreateLivre(nouvelLivre);
@@ -148,10 +146,9 @@ namespace Library.GUI
                 // Conserver les anciennes valeurs si les champs TextBox sont vides
                 selectedLivre.Titre = !string.IsNullOrEmpty(TitreTextBox.Text) ? TitreTextBox.Text : selectedLivre.Titre;
                 selectedLivre.Auteur = !string.IsNullOrEmpty(AuteurTextBox.Text) ? AuteurTextBox.Text : selectedLivre.Auteur;
-                selectedLivre.Editeur = !string.IsNullOrEmpty(EditeurTextBox.Text) ? EditeurTextBox.Text : selectedLivre.Editeur;
-                selectedLivre.AnneePublication = !string.IsNullOrEmpty(AnneePubTextBox.Text) ? int.Parse(AnneePubTextBox.Text) : selectedLivre.AnneePublication;
+                selectedLivre.Description = !string.IsNullOrEmpty(DescTextBox.Text) ? DescTextBox.Text : selectedLivre.Description;
                 selectedLivre.Categorie = !string.IsNullOrEmpty(CategorieTextBox.Text) ? CategorieTextBox.Text : selectedLivre.Categorie;
-                selectedLivre.Disponible = !string.IsNullOrEmpty(DisponibleTextBox.Text) ? (DisponibleTextBox.Text == "oui") ? true : (DisponibleTextBox.Text == "non") ? false : default(bool) : selectedLivre.Disponible;
+                selectedLivre.Disponible = !string.IsNullOrEmpty(DisponibleTextBox.Text) ? DisponibleTextBox.Text : selectedLivre.Disponible;
                 selectedLivre.Image = !string.IsNullOrEmpty(DisponibleTextBox.Text) ? File.ReadAllBytes(cheminFichierTextBox.Text) : selectedLivre.Image;
 
                 // Appeler la méthode de mise à jour du livre dans la base de données
@@ -209,6 +206,11 @@ namespace Library.GUI
         }
 
         private void ImageTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void DescTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
 
         }

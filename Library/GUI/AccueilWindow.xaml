@@ -1,4 +1,4 @@
-﻿<Window x:Class="Library.GUI.Accueil"
+﻿<Window  x:Class="Library.GUI.Accueil"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -8,7 +8,7 @@
         Title="Accueil" Height="450" Width="800">
     <Grid Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}">
         <!-- BoyImage -->
-        <Image HorizontalAlignment="Left" Height="261" Margin="487,0,0,0" VerticalAlignment="Center" Width="297" Source="C:\Users\HP\Documents\4IIR\Dot_Net\LibraryApp\Library\GUI\boyImageWithoutBg.png" />
+        <Image HorizontalAlignment="Left" Height="261" Margin="487,0,0,0" VerticalAlignment="Center" Width="297" Source="C:\Users\HP\Documents\4IIR\Dot_Net\LibraryApp\Library\GUI\images\boyImageWithoutBg.png" />
         <!-- Se connecter button -->
         <Button x:Name="Connexion" Content="Se connecter" HorizontalAlignment="Left" Margin="613,29,0,0" VerticalAlignment="Top" Click="Login" Background="Black" Foreground="White" Height="25" Width="78">
             <Button.Template>
@@ -52,7 +52,7 @@
             </TextBlock.Style>
         </TextBlock>
         <!-- Logo -->
-        <Image HorizontalAlignment="Left" Height="49" Margin="100,18,0,0" VerticalAlignment="Top" Width="64" Source="C:\Users\HP\Documents\4IIR\Dot_Net\LibraryApp\Library\GUI\bookLogoWithoutBg.png"/>
+        <Image HorizontalAlignment="Left" Height="49" Margin="100,18,0,0" VerticalAlignment="Top" Width="64" Source="C:\Users\HP\Documents\4IIR\Dot_Net\LibraryApp\Library\GUI\images\bookLogoWithoutBg.png"/>
         <!-- Titre -->
         <TextBlock HorizontalAlignment="Left" Margin="100,104,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="108" Width="236" FontSize="36" FontWeight="Bold"><Run Language="fr-ma" Text="Read wild,"/><LineBreak/><Run Language="fr-ma" Text="Study wild"/></TextBlock>
         <!-- A propos -->

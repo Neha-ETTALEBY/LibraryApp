@@ -10,11 +10,11 @@ none
 false
 TRACE;RELEASE;NET;NET8_0;NETCOREAPP
 C:\Users\HP\Documents\4IIR\Dot_Net\LibraryApp\Library\App.xaml
-2-1515782628
+9-1551172643
 
-24299670759
+331577252036
 2261892011936
-GUI\FirstWindow.xaml;MainWindow.xaml;
+GUI\AccueilWindow.xaml;GUI\AdminEspace.xaml;GUI\AdminWindowCRUD.xaml;GUI\ConnexionWindow.xaml;GUI\FirstWindow.xaml;GUI\InscriptionWindow.xaml;GUI\PersonnelStaffLivreCRUD.xaml;GUI\PersonnelStaffLogin.xaml;MainWindow.xaml;
 
 True
 

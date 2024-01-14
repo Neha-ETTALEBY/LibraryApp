@@ -45,8 +45,8 @@
         </Grid.ColumnDefinitions>
 
         <!-- Menu à gauche -->
-        <StackPanel Grid.Column="0" Background="#42c6e1" Width="200">
-            <Image Source="C:\Users\HP\Documents\4IIR\Dot_Net\LibraryApp\Library\GUI\iconStaff_.png" Width="60" Height="60" Margin="0,10,0,0" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+        <StackPanel Grid.Column="0" Background="Black" Width="200">
+            <Image Source="C:\Users\HP\Documents\4IIR\Dot_Net\LibraryApp\Library\GUI\images\iconStaff_.png" Width="60" Height="60" Margin="0,10,0,0" HorizontalAlignment="Center" VerticalAlignment="Top"/>
             <TextBlock Text="Welcome User !" Margin="10" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="White" FontSize="25" FontWeight="Bold" FontFamily="Global User Interface" />
 
             <Grid Margin="10">
@@ -83,11 +83,10 @@
                                 <GridViewColumn Header="IdLivre" DisplayMemberBinding="{Binding Path=IdLivre}" />
                                 <GridViewColumn Header="Titre" DisplayMemberBinding="{Binding Path=Titre}" />
                                 <GridViewColumn Header="Auteur " DisplayMemberBinding="{Binding Path=Auteur}" />
-                                <GridViewColumn Header="Editeur" DisplayMemberBinding="{Binding Path=Editeur}" />
-                                <GridViewColumn Header="AnneePublication" DisplayMemberBinding="{Binding Path=AnneePublication}" />
                                 <GridViewColumn Header="Categorie" DisplayMemberBinding="{Binding Path=Categorie}" />
                                 <GridViewColumn Header="Disponible" DisplayMemberBinding="{Binding Path=Disponible}" />
                                 <GridViewColumn Header="Image" DisplayMemberBinding="{Binding Path=Image}" />
+                                <GridViewColumn Header="Description " DisplayMemberBinding="{Binding Path=Description}" />
 
 
                             </GridView>
@@ -105,11 +104,10 @@
                     <TextBlock Text="Auteur :" Margin="0,0,0,5" />
                     <TextBox x:Name="AuteurTextBox" Margin="0,0,0,5" Text="{Binding SelectedItem.Auteur ,ElementName=livresListView}" Width="200" TextChanged="AuteurTextBox_TextChanged" />
 
-                    <TextBlock Text="Editeur:" Margin="0,0,0,5" />
-                    <TextBox x:Name="EditeurTextBox" Margin="0,0,0,5" Text="{Binding SelectedItem.Editeur,ElementName=livresListView}" Width="200" TextChanged="EditeurTextBox_TextChanged" />
+                    <TextBlock Text="Description:" Margin="0,0,0,5" />
+                    <TextBox x:Name="DescTextBox" Margin="0,0,0,5" Text="{Binding SelectedItem.Description,ElementName=livresListView}" Width="200" TextChanged="DescTextBox_TextChanged" />
 
-                    <TextBlock Text="AnneePublication :" Margin="0,0,0,5" />
-                    <TextBox x:Name="AnneePubTextBox" Margin="0,0,0,5" Text="{Binding SelectedItem.AnneePublication,ElementName=livresListView}" Width="200" TextChanged="AnneePubTextBox_TextChanged" />
+                   
 
                     <TextBlock Text="Categorie :" Margin="0,0,0,5" />
                     <TextBox x:Name="CategorieTextBox" Margin="0,0,0,5" Text="{Binding SelectedItem.Categorie,ElementName=livresListView}" Width="200" TextChanged="CategorieTextBox_TextChanged" />

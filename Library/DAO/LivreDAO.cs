@@ -45,11 +45,10 @@ namespace Library.DAO
                     // Mettre à jour les propriétés de l'employé existant avec les nouvelles valeurs
                     existingLivre.Titre = updatedLivre.Titre;
                     existingLivre.Auteur = updatedLivre.Auteur;
-                    existingLivre.Editeur = updatedLivre.Editeur;
-                    existingLivre.AnneePublication = updatedLivre.AnneePublication;
                     existingLivre.Categorie = updatedLivre.Categorie;
                     existingLivre.Disponible = updatedLivre.Disponible;
                     existingLivre.Image = updatedLivre.Image;
+                    existingLivre.Description = updatedLivre.Description;
 
 
                     // Enregistrer les modifications dans la base de données

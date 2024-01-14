@@ -77,7 +77,7 @@
 
         <!-- Partie de droite avec l'image -->
         <StackPanel Grid.Column="1" VerticalAlignment="Center">
-            <Image Source="C:\Users\HP\Documents\4IIR\Dot_Net\LibraryApp\Library\GUI\LibraryStaffPersonnel.jpg" 
+            <Image Source="C:\Users\HP\Documents\4IIR\Dot_Net\LibraryApp\Library\GUI\images\LibraryStaffPersonnel.jpg" 
                    Stretch="UniformToFill" VerticalAlignment="Center" Margin="0,20" />
         </StackPanel>
     </Grid>

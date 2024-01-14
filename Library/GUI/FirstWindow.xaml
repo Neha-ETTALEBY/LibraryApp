@@ -21,7 +21,7 @@
         <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
             <StackPanel>
                 <Border BorderBrush="#2689ac" BorderThickness="2" CornerRadius="10" Margin="5">
-                    <Image Source="C:\Users\HP\Documents\4IIR\Dot_Net\LibraryApp\Library\GUI\adherentIcon.png" Width="150" Height="150" />
+                    <Image Source="C:\Users\HP\Documents\4IIR\Dot_Net\LibraryApp\Library\GUI\images\adherentIcon.png" Width="150" Height="150" />
                 </Border>
                 <Button Content="Adherent" Margin="0,10" Click="AdherentRoleBtn_Click" Height="25" Width="78">
                     <Button.Template>
@@ -41,7 +41,7 @@
             </StackPanel>
             <StackPanel>
                 <Border BorderBrush="#2689ac" BorderThickness="2" CornerRadius="10" Margin="5">
-                    <Image Source="C:\Users\HP\Documents\4IIR\Dot_Net\LibraryApp\Library\GUI\AdministratorIcon.jpg" Width="150" Height="150" />
+                    <Image Source="C:\Users\HP\Documents\4IIR\Dot_Net\LibraryApp\Library\GUI\images\AdministratorIcon.jpg" Width="150" Height="150" />
                 </Border>
                 <Button Content="Admin" Margin="0,10" Click="AdminRolebtn_Click" Height="25" Width="78">
                     <Button.Template>
@@ -61,7 +61,7 @@
             </StackPanel>
             <StackPanel>
                 <Border BorderBrush="#2689ac" BorderThickness="2" CornerRadius="10" Margin="5">
-                    <Image Source="C:\Users\HP\Documents\4IIR\Dot_Net\LibraryApp\Library\GUI\employee_img.jpg" Width="150" Height="150" />
+                    <Image Source="C:\Users\HP\Documents\4IIR\Dot_Net\LibraryApp\Library\GUI\images\employee_img.jpg" Width="150" Height="150" />
                 </Border>
                 <Button Content="Employé" Margin="0,10" Click="EmployerRoleBtn_Click" Height="25" Width="78">
                     <Button.Template>

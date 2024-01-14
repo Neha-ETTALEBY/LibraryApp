@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP
 C:\Users\HP\Documents\4IIR\Dot_Net\LibraryApp\Library\App.xaml
-9-1551172643
+15451304391
 
-351204275014
+44845146760
 2261892011936
-GUI\AccueilWindow.xaml;GUI\AdminEspace.xaml;GUI\AdminWindowCRUD.xaml;GUI\ConnexionWindow.xaml;GUI\FirstWindow.xaml;GUI\InscriptionWindow.xaml;GUI\PersonnelStaffLivreCRUD.xaml;GUI\PersonnelStaffLogin.xaml;MainWindow.xaml;
+GUI\AccueilWindow.xaml;GUI\AdminEspace.xaml;GUI\AdminWindowCRUD.xaml;GUI\BookInfo.xaml;GUI\BooksOfBusiness.xaml;GUI\BooksOfHistory.xaml;GUI\BooksOfScience.xaml;GUI\BooksWindow.xaml;GUI\ConnexionWindow.xaml;GUI\FirstWindow.xaml;GUI\InscriptionWindow.xaml;GUI\ListOfBooks.xaml;GUI\PersonnelStaffLivreCRUD.xaml;GUI\PersonnelStaffLogin.xaml;MainWindow.xaml;
 
-False
+True
 

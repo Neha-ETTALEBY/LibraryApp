@@ -15,10 +15,8 @@ namespace Library.DAO
         // Ce design pattern est appele dependency injection
         public AdherentDAO(LibraryDBContext context)
         {
-            _dbContext = context ?? throw new ArgumentNullException(nameof(context));
-
+            _dbContext = context;
         }
-        public AdherentDAO() { }    
         // la méthode pour ajouter un adherent
 
         public void AddAdherent(Adherent adherent)
@@ -66,6 +64,11 @@ namespace Library.DAO
                 _dbContext.Adherents.Remove(AdherentToRemove);
                 _dbContext.SaveChanges();
             }
+        }
+        // utile pour la connexion d'un adherent à l'app 
+        public Adherent GetAdherentByEmailPassword(string email, string motDePasse)
+        {
+            return _dbContext.Adherents.SingleOrDefault(e => e.Email == email && e.MotDePasse == motDePasse);
         }
 
 

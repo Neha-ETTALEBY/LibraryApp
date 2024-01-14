@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Library.Business;
+using Library.DAO;
+using Library.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,6 +22,7 @@ namespace Library.GUI
     /// </summary>
     public partial class Inscription : Window
     {
+        LibraryDBContext conn = new LibraryDBContext();
         public Inscription()
         {
             InitializeComponent();
@@ -31,6 +35,46 @@ namespace Library.GUI
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+
+        }
+
+        private void CreerCompte(object sender, RoutedEventArgs e)
+        {
+            //Récupération des valeurs
+            string nom = TextBoxNom.Text;
+            string prenom = TextBoxPrenom.Text;
+            string email = TextBoxEmail.Text;
+            string password = PasswordBox.Password;
+
+            // Validater les inputs
+            if (string.IsNullOrWhiteSpace(nom) || string.IsNullOrWhiteSpace(prenom) || string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(password))
+            {
+                // On Affiche un message d'erreur
+                MessageBox.Show("Please fill in all the required fields.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+            Adherent newAdherent = new Adherent
+            {
+                Nom = nom,
+                Prenom = prenom,
+                Email = email,
+                MotDePasse = password
+            };
+            // Use the AdherentManager to add the new Adherent
+            AdherentManager adherentManager = new AdherentManager(new AdherentDAO(conn));
+            if (adherentManager.ValidEmail(email))
+            {
+                adherentManager.AddAdherent(newAdherent);
+                ConnexionWindow connexion = new ConnexionWindow();
+                MessageBox.Show("Inscription acceptee", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                connexion.Show();
+                Hide();
+            }
+            else
+            {
+                MessageBox.Show("Invalid Email");
+            }
+
 
         }
     }

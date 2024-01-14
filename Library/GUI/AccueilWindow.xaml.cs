@@ -26,14 +26,17 @@ namespace Library.GUI
 
         private void SignUp(object sender, RoutedEventArgs e)
         {
-                Inscription ins = new Inscription();
-                ins.Show();
-                Hide();
+            // On fait appel à la fenetre Inscriptions
+            Inscription ins = new Inscription();
+            ins.Show();
+            Hide();
         }
 
         private void Login(object sender, RoutedEventArgs e)
         {
-
+            ConnexionWindow connexion = new ConnexionWindow();
+            connexion.Show();
+            Hide();
         }
     }
 }
